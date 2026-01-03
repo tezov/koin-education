@@ -29,16 +29,6 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-
-//            implementation("io.insert-koin:koin-android")
-//            implementation("io.insert-koin:koin-androidx-compose")
-//            implementation("io.insert-koin:koin-androidx-compose-navigation")
-//            implementation("io.insert-koin:koin-core-coroutines")
-//            implementation("io.insert-koin:koin-androidx-workmanager")
-//            implementation("io.insert-koin:koin-androidx-navigation:1.2.3-alpha03")
-//            testImplementation("io.insert-koin:koin-test-junit4")
-//            testImplementation("io.insert-koin:koin-android-test")
-
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -49,14 +39,6 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-
-
-//            implementation("io.insert-koin:koin-bom")
-//            implementation("io.insert-koin:koin-core:4.2.0-beta2")
-            implementation("io.insert-koin:koin-compose:4.2.0-beta2")
-//            implementation("io.insert-koin:koin-compose-viewmodel")
-//            implementation("io.insert-koin:koin-compose-navigation3")
-
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
