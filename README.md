@@ -1,35 +1,24 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# Dependency Injection with Koin — Basic setup (Part 2)
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+This repository contains the source code for **Part 2** of an educational series about dependency injection.
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+In this part, we build on the first one by introducing **Koin**, a Kotlin Multiplatform–compatible dependency injection framework.  
+The goal is to remove manual wiring while keeping the same clean design, letting Koin handle object creation automatically.
 
-### Build and Run Android Application
+## What this part covers
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+- How to add Koin to a Kotlin Multiplatform project
+- The basic concepts: `single` and `factory`
+- Wiring dependencies with Koin modules
+- Using `koinInject` to retrieve instances
+- How Koin restores the “lazy creation” pattern without manual instantiation
 
-### Build and Run iOS Application
+The example reuses the `Software / Engine / Simulator` model from Part 1, but now the dependencies are declared in a Koin module and injected automatically.
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+## Full article
 
----
+This repository only contains the source code.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+For the full explanation, context, and reasoning behind each step, read the complete article on **Medium**:
+
+➡️ **[Read the full article on Medium](https://medium.com/itnext/dependency-injection-with-koin-the-minimal-setup-kmp-d696ae2db09f)**
