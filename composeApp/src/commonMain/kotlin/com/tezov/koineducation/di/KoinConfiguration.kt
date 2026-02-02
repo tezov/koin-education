@@ -27,12 +27,15 @@ val koinConfiguration = KoinConfiguration {
             FuelStorage(initialQuantity = get<ConfigProtocol>().storageInitialQuantity)
         }
 
-        factory<Software> {
-            Software(
-                engine = get(),
-                simulator = get()
-            )
+        scope<Software> {
+            factory<Software> {
+                Software(
+                    engine = get(),
+                    simulator = get()
+                )
+            }
         }
+
 
         scope<Program.iOS> {
             scoped<EngineProtocol> {

@@ -23,3 +23,11 @@ This repository only contains the source code.
 For the full explanation, context, and reasoning behind each step, read the complete article on **Medium**:
 
 ➡️ **[Read the full article on Medium](https://medium.com/itnext/dependency-injection-with-koin-scopes-4b45bbcd243d)**
+
+
+## Update
+
+**Check to this article to understand Linked Scope** In the next release, 4.2.0, the initial example won't compile any more. A stricter control
+of scope resolution make impossible for root parent to resolve its own needs with children known scope.
+
+But it is still possible with an extra scope and linked scope. 
