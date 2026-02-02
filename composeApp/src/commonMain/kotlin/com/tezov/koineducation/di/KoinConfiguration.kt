@@ -23,11 +23,13 @@ val koinConfiguration = KoinConfiguration {
             }
         }
 
-        factory<Software> {
-            Software(
-                engine = get(),
-                simulator = get()
-            )
+        scope<Software> {
+            factory<Software> {
+                Software(
+                    engine = get(),
+                    simulator = get()
+                )
+            }
         }
 
         scope<FuelStorageProtocol> {

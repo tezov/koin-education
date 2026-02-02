@@ -45,25 +45,34 @@ fun App() {
 @Composable
 fun KoinGlobalScoped() {
     val koin = getKoin()
+
+    val softwareScope = remember { koin.createScope<Software>() }
     val storageScope = remember { koin.createScope<FuelStorageProtocol>() }
 
+    // Android
     val androidScope = remember {
         koin.createScope<Program.Android>().also {
-            it.linkTo(storageScope)
+            it.linkTo(storageScope) // Now android will be able to resolve FuelStorageProtocol
         }
     }
-    val androidSoftware = remember { androidScope.get<Software>() }
+    softwareScope.linkTo(androidScope) // Engine and Simulator will be resolved by AndroidScope
+    val androidSoftware = remember { softwareScope.get<Software>() }
     with(Program.Android { 5L }) {
         androidSoftware.build(this)
         androidSoftware.launch(this)
     }
 
+    // iOS
     val iosScope = remember {
         koin.createScope<Program.iOS>().also {
-            it.linkTo(storageScope)
+            it.linkTo(storageScope) // Now iOS will be able to resolve FuelStorageProtocol
+            // Same as Android because same scope instance and FuelStorageProtocol is singleton 'scoped'
         }
     }
-    val iosSoftware = remember { iosScope.get<Software>() }
+    softwareScope.unlink(softwareScope) // need to unlink to avoid conflict since iosScope resolve same class than androidScope
+    softwareScope.linkTo(iosScope) // Engine and Simulator will be resolved by iosScope
+
+    val iosSoftware = remember { softwareScope.get<Software>() } // this time software scope will resolve with iosScope
     with(Program.iOS { 5L }) {
         iosSoftware.build(this)
         iosSoftware.launch(this)
@@ -74,6 +83,7 @@ fun KoinGlobalScoped() {
             androidScope.close()
             iosScope.close()
             storageScope.close()
+            softwareScope.close()
         }
     }
 }

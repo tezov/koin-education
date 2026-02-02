@@ -21,4 +21,4 @@ This repository only contains the source code.
 
 For the full explanation, context, and reasoning behind each step, read the complete article on **Medium**:
 
-➡️ **[Read the full article on Medium](PUT_MEDIUM_LINK_HERE)**
+➡️ **[Read the full article on Medium](https://medium.com/itnext/dependency-injection-with-koin-linked-scopes-a305c05f36a7)**
