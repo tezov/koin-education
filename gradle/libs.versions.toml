@@ -4,24 +4,21 @@ android-minSdk = "24"
 android-compileSdk = "36"
 android-targetSdk = "36"
 
-compose = "1.10.0"
-kotlin = "2.3.0"
-
-compose-material3 = "1.9.0"
-compose-activity = "1.12.3"
+kotlin = "2.3.20-RC"
+compose-multiplatform = "1.10.1"
+compose-android = "1.10.4"
+compose-activity = "1.12.4"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
-compose-ui-android = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
-compose-foundation-android = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose" }
+compose-ui-android = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-android" }
+compose-foundation-android = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose-android" }
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
-composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
-androidLint = { id = "com.android.lint", version.ref = "agp" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }

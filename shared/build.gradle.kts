@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    id("io.insert-koin.compiler.plugin") version "0.3.0"
 }
 
 kotlin {
@@ -40,6 +41,7 @@ kotlin {
                 implementation(compose.components.resources)
 
                 implementation("io.insert-koin:koin-compose:4.2.0-RC1")
+                implementation("io.insert-koin:koin-annotations:4.2.0-RC1")
             }
         }
 

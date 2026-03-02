@@ -12,7 +12,10 @@ import com.tezov.store.shared.implementation.Software
 import com.tezov.store.shared.implementation.XcodeEngine
 import com.tezov.store.shared.implementation.iOSSimulator
 import org.koin.dsl.KoinConfiguration
+import org.koin.dsl.bind
 import org.koin.dsl.module
+import org.koin.plugin.module.dsl.factory
+import org.koin.plugin.module.dsl.scoped
 
 val koinConfiguration = KoinConfiguration {
     modules(module {
@@ -24,12 +27,7 @@ val koinConfiguration = KoinConfiguration {
         }
 
         scope<Software> {
-            factory<Software> {
-                Software(
-                    engine = get(),
-                    simulator = get()
-                )
-            }
+            factory<Software>()
         }
 
         scope<FuelStorageProtocol> {
@@ -39,21 +37,13 @@ val koinConfiguration = KoinConfiguration {
         }
 
         scope<Program.iOS> {
-            scoped<EngineProtocol> {
-                XcodeEngine(fuel = get())
-            }
-            factory<SimulatorProtocol> {
-                iOSSimulator()
-            }
+            scoped<XcodeEngine>() bind EngineProtocol::class
+            factory<iOSSimulator>() bind SimulatorProtocol::class
         }
 
         scope<Program.Android> {
-            scoped<EngineProtocol> {
-                AndroidStudioEngine(fuel = get())
-            }
-            factory<SimulatorProtocol> {
-                AndroidSimulator()
-            }
+            scoped<AndroidStudioEngine>() bind EngineProtocol::class
+            factory<AndroidSimulator>() bind SimulatorProtocol::class
         }
     })
 }
