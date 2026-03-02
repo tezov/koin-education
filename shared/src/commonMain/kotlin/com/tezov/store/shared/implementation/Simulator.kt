@@ -1,4 +1,4 @@
-package com.tezov.koineducation.implementation
+package com.tezov.store.shared.implementation
 
 interface SimulatorProtocol {
     fun loadAndStart(program: Program)

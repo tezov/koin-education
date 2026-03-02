@@ -2,7 +2,7 @@
 
 This repository contains the source code for **Unit testing Koin** of an educational series about dependency injection with Kotlin and Koin.
 
-This part sum up the previous stories by showing the same with unit tests
+This part show how to use Koin Annotations
 
 ---
 
@@ -12,4 +12,4 @@ This repository only contains the source code.
 
 For the full explanation, context, and reasoning behind each step, read the complete article on **Medium**:
 
-➡️ **[Read the full article on Medium](https://medium.com/itnext/understanding-dependencies-injection-with-unit-tests-and-koin-04f4032f6bea)**
+➡️ **[Read the full article on Medium](TODO)**

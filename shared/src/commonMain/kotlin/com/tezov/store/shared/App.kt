@@ -1,24 +1,22 @@
-package com.tezov.koineducation
+package com.tezov.store.shared
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.tezov.koineducation.di.koinConfiguration
-import com.tezov.koineducation.implementation.ConfigProtocol
-import com.tezov.koineducation.implementation.FuelStorageProtocol
-import com.tezov.koineducation.implementation.Program
-import com.tezov.koineducation.implementation.Software
+import com.tezov.store.shared.di.koinConfiguration
+import com.tezov.store.shared.implementation.ConfigProtocol
+import com.tezov.store.shared.implementation.FuelStorageProtocol
+import com.tezov.store.shared.implementation.Program
+import com.tezov.store.shared.implementation.Software
 import kotlinx.coroutines.delay
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinApplication
 import org.koin.compose.getKoin
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
 @Composable
-@Preview
 fun App() {
     KoinApplication(
         configuration = koinConfiguration, content = {

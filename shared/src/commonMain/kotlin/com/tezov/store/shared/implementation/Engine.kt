@@ -1,4 +1,4 @@
-package com.tezov.koineducation.implementation
+package com.tezov.store.shared.implementation
 
 interface EngineProtocol {
     fun build(program: Program)
