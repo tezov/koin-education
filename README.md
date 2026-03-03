@@ -1,4 +1,4 @@
-# Dependency Injection with Koin: Unit test on Koin (Part 2-1)
+# Dependency Injection with Koin: Unit test on Koin (Part 3-1)
 
 This repository contains the source code for **Unit testing Koin** of an educational series about dependency injection with Kotlin and Koin.
 
@@ -12,4 +12,4 @@ This repository only contains the source code.
 
 For the full explanation, context, and reasoning behind each step, read the complete article on **Medium**:
 
-➡️ **[Read the full article on Medium](TODO)**
+➡️ **[Read the full article on Medium](https://itnext.io/koin-educational-series-interseason-episode-a8bd439a84ae)**
