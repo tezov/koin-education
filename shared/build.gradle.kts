@@ -1,3 +1,5 @@
+import kotlin.collections.plus
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
@@ -7,29 +9,26 @@ plugins {
 }
 
 kotlin {
+    val xcfName = "SharedKit"
+    val namespace = "com.tezov.store.shared"
+
     androidLibrary {
-        namespace = "com.tezov.store.shared"
+        this.namespace = namespace
         compileSdk = 36
         minSdk = 24
 
         withHostTestBuilder {}
     }
-    val xcfName = "SharedKit"
-    iosX64 {
-        binaries.framework {
+    listOf(iosArm64(), iosSimulatorArm64()).forEach {
+        it.binaries.framework {
+            isStatic = true
             baseName = xcfName
+            freeCompilerArgs += listOf(
+                "-Xbinary=bundleId=$namespace",
+            )
         }
     }
-    iosArm64 {
-        binaries.framework {
-            baseName = xcfName
-        }
-    }
-    iosSimulatorArm64 {
-        binaries.framework {
-            baseName = xcfName
-        }
-    }
+
     sourceSets {
         commonMain {
             dependencies {
