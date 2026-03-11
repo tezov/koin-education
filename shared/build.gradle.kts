@@ -1,11 +1,18 @@
 import kotlin.collections.plus
 
 plugins {
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    id("io.insert-koin.compiler.plugin") version "0.3.0"
+    id("io.insert-koin.compiler.plugin") version "0.4.0"
+}
+
+koinCompiler {
+//    userLogs = true
+//    debugLogs = true
+//    dslSafetyChecks = true
 }
 
 kotlin {
@@ -32,15 +39,21 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                // Should be replaced with declaration from lib, but I'm lazy to do it in this project
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.ui)
-                implementation(compose.components.resources)
+                implementation(libs.kotlinx.serialization.core)
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.ui)
+                implementation(libs.compose.foundation)
+                implementation(libs.compose.material3)
 
-                implementation("io.insert-koin:koin-compose:4.2.0-RC1")
+                implementation(libs.compose.navigation3.ui)
+                implementation(libs.compose.navigation3.adaptive)
+                implementation(libs.compose.navigation3.lifecycle)
+
+                implementation(libs.compose.material.icons.core)
+
+                implementation("io.insert-koin:koin-compose:4.2.0-RC2")
                 implementation("io.insert-koin:koin-annotations:4.2.0-RC1")
+                implementation("io.insert-koin:koin-compose-viewmodel:4.2.0-RC1")
             }
         }
 

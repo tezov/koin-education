@@ -1,8 +1,6 @@
-# Dependency Injection with Koin: Unit test on Koin (Part 3-1)
+# Dependency Injection with Koin: Unit test on Koin (Part 3-2)
 
-This repository contains the source code for **Unit testing Koin** of an educational series about dependency injection with Kotlin and Koin.
-
-This part show how to use Koin Annotations
+This repository contains the source code for **Annotation with Koin compiler** of an educational series about dependency injection with Kotlin and Koin.
 
 ---
 
@@ -12,4 +10,4 @@ This repository only contains the source code.
 
 For the full explanation, context, and reasoning behind each step, read the complete article on **Medium**:
 
-➡️ **[Read the full article on Medium](https://itnext.io/koin-educational-series-interseason-episode-a8bd439a84ae)**
+➡️ **[Read the full article on Medium](https://medium.com/@tezov.app/koin-educational-series-production-setup-with-annotations-and-the-new-compiler-8f555e6de4b7)**
