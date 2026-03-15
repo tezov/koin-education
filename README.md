@@ -1,6 +1,6 @@
 # Dependency Injection with Koin: Unit test on Koin (Part 3-2)
 
-This repository contains the source code for **Annotation with Koin compiler** of an educational series about dependency injection with Kotlin and Koin.
+This repository contains the source code for **Unit Testing with Mokkery** of an educational series about dependency injection with Kotlin and Koin and Mokkery
 
 ---
 

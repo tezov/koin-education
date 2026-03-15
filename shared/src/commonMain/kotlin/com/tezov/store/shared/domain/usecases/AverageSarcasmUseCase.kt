@@ -1,16 +1,18 @@
 package com.tezov.store.shared.domain.usecases
 
+import com.tezov.store.shared.annotation.OpenForTest
 import com.tezov.store.shared.domain.models.LevelDomainModel
 import com.tezov.store.shared.domain.models.TechRoleDomainModel
 import com.tezov.store.shared.domain.protocol.TechIndustryRepositoryProtocol
 import org.koin.core.annotation.Factory
 
+@OpenForTest
 @Factory
 class AverageSarcasmByRoleUseCase(
-    private val repository: TechIndustryRepositoryProtocol
+    private val listWorkersByRoleUseCase: ListWorkersByRoleUseCase,
 ) {
     suspend operator fun invoke(role: TechRoleDomainModel): LevelDomainModel? {
-        val workersInRole = repository.getAllWorkers().filter { it.role == role }
+        val workersInRole = listWorkersByRoleUseCase(role)
         if (workersInRole.isEmpty()) return null
         val avg = workersInRole.map { it.sarcasmLevel.value }.average().toInt()
         return LevelDomainModel(avg)

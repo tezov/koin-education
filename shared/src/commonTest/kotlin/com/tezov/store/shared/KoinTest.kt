@@ -27,7 +27,7 @@ class KoinTest {
     }
 
     class DRandomId : BProtocol {
-        override val id: String = Uuid.Companion.generateV4().toHexString()
+        override val id: String = Uuid.generateV4().toHexString()
     }
 
     data class BWrapper(val value: BProtocol)
@@ -37,7 +37,7 @@ class KoinTest {
         val koinApplication = koinApplication {
             modules(module {
                 single {
-                    val singleUUID = Uuid.Companion.generateV4().toHexString()
+                    val singleUUID = Uuid.generateV4().toHexString()
                     println("uuid = $singleUUID")
                     A(singleUUID)
                 }
@@ -60,7 +60,7 @@ class KoinTest {
         val koinApplication = koinApplication {
             modules(module {
                 factory {
-                    val singleUUID = Uuid.Companion.generateV4().toHexString()
+                    val singleUUID = Uuid.generateV4().toHexString()
                     println("uuid = $singleUUID")
                     A(singleUUID)
                 }
