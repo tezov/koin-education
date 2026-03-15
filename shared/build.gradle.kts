@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    id("io.insert-koin.compiler.plugin") version "0.4.0"
+    alias(libs.plugins.koinCompiler)
     id("org.jetbrains.kotlin.plugin.allopen") version libs.versions.kotlin
     id("dev.mokkery") version "3.2.0"
 }
@@ -53,8 +53,8 @@ kotlin {
 
                 implementation(libs.compose.material.icons.core)
 
-                implementation("io.insert-koin:koin-compose:4.2.0-RC2")
-                implementation("io.insert-koin:koin-annotations:4.2.0-RC1")
+                implementation(libs.koin.compose)
+                implementation(libs.koin.compose.annotation)
                 implementation(libs.koin.compose.viewmodel)
             }
         }
