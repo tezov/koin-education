@@ -81,7 +81,7 @@ kotlin {
 }
 
 allOpen {
-    annotation("${kotlin.android.namespace}.annotations.OpenForTest")
+    annotation("${kotlin.android.namespace}.annotation.OpenForTest")
 }
 
 mokkery {
