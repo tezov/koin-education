@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.koinCompiler)
     id("org.jetbrains.kotlin.plugin.allopen") version libs.versions.kotlin
-    id("dev.mokkery") version "3.2.0"
+    id("dev.mokkery") version "3.3.0-SNAPSHOT"
 }
 
 koinCompiler {

@@ -54,7 +54,7 @@ class CountWorkersByRoleUseCaseTest {
         val expected = workers.size
 
         // Mock
-        everySuspend { listWorkersByRoleUseCase.invoke(any()) } returns listOf()
+        everySuspend { listWorkersByRoleUseCase.invoke(any()) } returns workers
 
         // Test
         val result = sut.invoke(role)
