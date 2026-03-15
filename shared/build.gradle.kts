@@ -6,7 +6,9 @@ plugins {
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    id("io.insert-koin.compiler.plugin") version "0.3.0"
+    id("io.insert-koin.compiler.plugin") version "0.4.0"
+    id("org.jetbrains.kotlin.plugin.allopen") version libs.versions.kotlin
+    id("dev.mokkery") version "3.2.0"
 }
 
 koinCompiler {
@@ -19,7 +21,7 @@ kotlin {
     val xcfName = "SharedKit"
     val namespace = "com.tezov.store.shared"
 
-    androidLibrary {
+    android {
         this.namespace = namespace
         compileSdk = 36
         minSdk = 24
@@ -51,15 +53,16 @@ kotlin {
 
                 implementation(libs.compose.material.icons.core)
 
-                implementation("io.insert-koin:koin-compose:4.2.0-RC1")
+                implementation("io.insert-koin:koin-compose:4.2.0-RC2")
                 implementation("io.insert-koin:koin-annotations:4.2.0-RC1")
-                implementation("io.insert-koin:koin-compose-viewmodel:4.2.0-RC1")
+                implementation(libs.koin.compose.viewmodel)
             }
         }
 
         commonTest {
             dependencies {
                 implementation(libs.kotlin.test)
+                implementation(libs.kotlin.test.coroutine)
             }
         }
 
@@ -74,5 +77,16 @@ kotlin {
 
             }
         }
+    }
+}
+
+allOpen {
+    annotation("${kotlin.android.namespace}.annotations.OpenForTest")
+}
+
+mokkery {
+    with(stubs) {
+        allowConcreteClassInstantiation = true
+        allowClassInheritance = true
     }
 }

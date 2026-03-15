@@ -4,7 +4,9 @@ android-minSdk = "24"
 android-compileSdk = "36"
 android-targetSdk = "36"
 
-kotlin = "2.3.20-RC2"
+koinComposeViewmodel = "4.2.0-RC1"
+kotlin = "2.3.20-RC3"
+test-kotlin-coroutine = "1.10.2"
 compose-multiplatform = "1.10.2"
 compose-material3 = "1.9.0"
 compose-material-icons = "1.7.3"
@@ -25,6 +27,7 @@ compose-material-icons-core = { module = "org.jetbrains.compose.material:materia
 compose-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "compose-navigation3-ui" }
 compose-navigation3-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation3", version.ref = "compose-navigation3-adaptive" }
 compose-navigation3-lifecycle = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "compose-navigation3-lifecycle" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinComposeViewmodel" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
 # Android
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-android-activity" }
@@ -32,6 +35,7 @@ compose-foundation-android = { group = "androidx.compose.foundation", name = "fo
 compose-ui-android = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-android" }
 # Test
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "test-kotlin-coroutine" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -9,11 +9,12 @@ import com.tezov.store.shared.presentation.models.toDetailUiModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import org.koin.core.annotation.InjectedParam
 import org.koin.core.annotation.KoinViewModel
 
 @KoinViewModel
 class TechRoleDetailsViewModel(
-    role: String,
+    @InjectedParam role: String,
     private val listWorkersByRoleUseCase: ListWorkersByRoleUseCase
 ) : ViewModel() {
 
