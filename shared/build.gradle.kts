@@ -7,8 +7,8 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.koinCompiler)
-    id("org.jetbrains.kotlin.plugin.allopen") version libs.versions.kotlin
-    id("dev.mokkery") version "3.3.0-SNAPSHOT"
+    id("org.jetbrains.kotlin.plugin.allopen") version libs.versions.kotlin.get()
+    id("dev.mokkery") version "3.3.0"
 }
 
 koinCompiler {
@@ -23,8 +23,8 @@ kotlin {
 
     android {
         this.namespace = namespace
-        compileSdk = 36
-        minSdk = 24
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
 
         withHostTestBuilder {}
     }
