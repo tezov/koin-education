@@ -25,7 +25,7 @@ class GenerateWorkers {
 
         fun createList(
             count: Int,
-            roles: List<TechRoleDomainModel> = TechRoleDomainModel.entries
+            roles: List<TechRoleDomainModel> = TechRoleDomainModel.entries.shuffled().take(count)
         ): List<TechWorkerDomainModel> {
             if(count == 0) {
                 return emptyList()

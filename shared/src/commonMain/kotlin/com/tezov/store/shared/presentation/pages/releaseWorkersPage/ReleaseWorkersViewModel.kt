@@ -37,6 +37,8 @@ class ReleaseWorkersViewModel(
     }
 
     fun toggleWorkerSelection(workerId: WorkerIdDomainModel) {
+        val knownIds = _allWorkers.value.map { it.id }.toSet()
+        if (workerId !in knownIds) return
         _selectedWorkers.value = _selectedWorkers.value.toMutableSet().apply {
             if (contains(workerId)) remove(workerId) else add(workerId)
         }
