@@ -64,6 +64,7 @@ kotlin {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(libs.kotlin.test.coroutine)
+                implementation("dev.mokkery:mokkery-coroutines:3.3.0")
             }
         }
 
