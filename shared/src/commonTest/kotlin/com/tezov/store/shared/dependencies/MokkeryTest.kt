@@ -1,9 +1,7 @@
-package com.tezov.store.shared
+package com.tezov.store.shared.dependencies
 
 import com.tezov.store.shared.annotation.OpenForTest
-import dev.mokkery.MockMode.autoUnit
-import dev.mokkery.MockMode.autofill
-import dev.mokkery.MockMode.original
+import dev.mokkery.MockMode
 import dev.mokkery.MokkeryRuntimeException
 import dev.mokkery.answering.calls
 import dev.mokkery.answering.returns
@@ -12,7 +10,7 @@ import dev.mokkery.answering.returnsBy
 import dev.mokkery.answering.sequentially
 import dev.mokkery.answering.throws
 import dev.mokkery.answering.throwsBy
-import dev.mokkery.coroutines.answering.Awaitable.Companion.delayed
+import dev.mokkery.coroutines.answering.Awaitable
 import dev.mokkery.coroutines.answering.awaits
 import dev.mokkery.debug.printMokkeryDebug
 import dev.mokkery.every
@@ -29,11 +27,7 @@ import dev.mokkery.spy
 import dev.mokkery.t1
 import dev.mokkery.t2
 import dev.mokkery.verify
-import dev.mokkery.verify.VerifyMode.Companion.atLeast
-import dev.mokkery.verify.VerifyMode.Companion.atMost
-import dev.mokkery.verify.VerifyMode.Companion.exhaustive
-import dev.mokkery.verify.VerifyMode.Companion.inRange
-import dev.mokkery.verify.VerifyMode.Companion.order
+import dev.mokkery.verify.VerifyMode
 import dev.mokkery.verifyNoMoreCalls
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.channels.Channel
@@ -106,19 +100,19 @@ class MokkeryTest {
 
     @Test
     fun `autoUnit returns Unit for Unit functions without explicit answer`() {
-        val mock = mock<A>(autoUnit)
+        val mock = mock<A>(MockMode.autoUnit)
         mock.returnUnit()
     }
 
     @Test
     fun `autofill mode returns default values`() = runTest {
-        val mock = mock<A>(autofill)
+        val mock = mock<A>(MockMode.autofill)
         assertEquals("", mock.foo("anything"))
     }
 
     @Test
     fun `original mode calls actual implementation`() = runTest {
-        val mock = mock<A>(original) { every { foo("x") } returns "X"  }
+        val mock = mock<A>(MockMode.original) { every { foo("x") } returns "X" }
 
         assertEquals("test", mock.foo("test")) // use the real code implementation
         assertEquals("X", mock.foo("x")) // use the stub response
@@ -178,7 +172,7 @@ class MokkeryTest {
     @Test
     fun `argument capturing with Capture`() = runTest {
         val mock = mock<A>()
-        val slot = Capture.slot<String>()
+        val slot = Capture.Companion.slot<String>()
         every { mock.foo(capture(slot)) } returns "captured"
 
         assertEquals("captured", mock.foo("test"))
@@ -234,7 +228,7 @@ class MokkeryTest {
     @Test
     fun `spying allow to verify on real instance`() = runTest {
         val spyB = spy(B())
-        val realCWithMock = C(a = mock(original), b = spyB)
+        val realCWithMock = C(a = mock(MockMode.original), b = spyB)
         assertEquals("ab", realCWithMock.join())
 
         verify {
@@ -262,9 +256,9 @@ class MokkeryTest {
         mockA.foo("four")
 
         verify { mockA.foo("one") }
-        verify(atLeast(2)) { mockA.foo("two") }
-        verify(atMost(3)) { mockA.foo("three") }
-        verify(inRange(1..3)) { mockA.foo("four") }
+        verify(VerifyMode.Companion.atLeast(2)) { mockA.foo("two") }
+        verify(VerifyMode.Companion.atMost(3)) { mockA.foo("three") }
+        verify(VerifyMode.Companion.inRange(1..3)) { mockA.foo("four") }
     }
 
     @Test
@@ -277,7 +271,7 @@ class MokkeryTest {
         mockA.foo("second")
         mockA.foo("third")
 
-        verify(order) {
+        verify(VerifyMode.Companion.order) {
             mockA.foo("first")
             mockA.foo("second")
             // third not verified
@@ -296,7 +290,7 @@ class MokkeryTest {
         mockA.foo("second")
         mockA.foo("third")
 
-        verify(exhaustive) {
+        verify(VerifyMode.Companion.exhaustive) {
             mockA.foo("first")
             mockA.foo("second")
             mockA.foo("third") // fail if we don't verify everything
@@ -365,7 +359,7 @@ class MokkeryTest {
     @Test
     fun `suspend function returns delayed return`() = runTest {
         val a = mock<A>()
-        everySuspend { a.suspendedFoo(any()) } awaits delayed(value = "done")
+        everySuspend { a.suspendedFoo(any()) } awaits Awaitable.Companion.delayed(value = "done")
 
         assertEquals("done", a.suspendedFoo("x"))
     }

@@ -1,4 +1,4 @@
-package com.tezov.store.shared
+package com.tezov.store.shared.dependencies
 
 import org.koin.core.qualifier.named
 import org.koin.dsl.koinApplication
@@ -60,7 +60,7 @@ class KoinTest {
         val koinApplication = koinApplication {
             modules(module {
                 factory {
-                    val singleUUID = Uuid.generateV4().toHexString()
+                    val singleUUID = Uuid.Companion.generateV4().toHexString()
                     println("uuid = $singleUUID")
                     A(singleUUID)
                 }
