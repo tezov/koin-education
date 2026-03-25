@@ -5,7 +5,6 @@ import com.tezov.store.shared.domain.models.WorkerIdDomainModel
 import com.tezov.store.shared.domain.usecases.ListWorkersByRoleUseCase
 import com.tezov.store.shared.domain.usecases.ReleaseWorkersUseCase
 import com.tezov.store.shared.presentation.models.toWorkerCardUiModel
-import com.tezov.store.shared.presentation.pages.releaseWorkersPage.ReleaseWorkersViewModel
 import dev.mokkery.answering.returns
 import dev.mokkery.everySuspend
 import dev.mokkery.matcher.any

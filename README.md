@@ -1,6 +1,7 @@
 # Dependency Injection with Koin: Unit test on Koin (Part 3-2)
 
-This repository contains the source code for **Unit Testing with Mokkery through unit test** of an educational series about dependency injection with Kotlin and Koin and Mokkery
+This repository contains the source code for **Koin Annotations through unit test** of an
+educational series about dependency injection with Kotlin and Koin
 
 ---
 
@@ -8,6 +9,9 @@ This repository contains the source code for **Unit Testing with Mokkery through
 
 This repository only contains the source code.
 
-For the full explanation, context, and reasoning behind each step, read the complete article on **Medium**:
+For the full explanation, context, and reasoning behind each step, read the complete article on *
+*Medium**:
 
-➡️ **[Read the full article on Medium](https://medium.com/@tezov.app/understanding-unit-testing-in-kmm-with-mokkery-through-unit-tests-xd-7d041ccf53a2)**
+➡️ *
+*[Read the full article on Medium](https://medium.com/koin-developers/mastering-koin-annotations-with-the-koin-compiler-through-unit-tests-f5d169dad8f3)
+**

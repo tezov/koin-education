@@ -6,14 +6,19 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.savedstate.serialization.SavedStateConfiguration
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
-import kotlinx.serialization.modules.subclass
 
 val savedStateConfiguration = SavedStateConfiguration {
     serializersModule = SerializersModule {
         polymorphic(NavKey::class) {
-            subclass(AppNavKey.RolesOverviewScreen::class, AppNavKey.RolesOverviewScreen.serializer())
+            subclass(
+                AppNavKey.RolesOverviewScreen::class,
+                AppNavKey.RolesOverviewScreen.serializer()
+            )
             subclass(AppNavKey.RoleDetailsScreen::class, AppNavKey.RoleDetailsScreen.serializer())
-            subclass(AppNavKey.ReleaseWorkersScreen::class, AppNavKey.ReleaseWorkersScreen.serializer())
+            subclass(
+                AppNavKey.ReleaseWorkersScreen::class,
+                AppNavKey.ReleaseWorkersScreen.serializer()
+            )
         }
     }
 }

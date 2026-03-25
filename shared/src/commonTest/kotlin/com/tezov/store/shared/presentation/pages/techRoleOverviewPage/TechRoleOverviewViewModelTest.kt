@@ -8,7 +8,6 @@ import com.tezov.store.shared.domain.usecases.AverageProductivityByRoleUseCase
 import com.tezov.store.shared.domain.usecases.AverageSarcasmByRoleUseCase
 import com.tezov.store.shared.domain.usecases.CountWorkersByRoleUseCase
 import com.tezov.store.shared.presentation.models.toWorkerCardUiModel
-import com.tezov.store.shared.presentation.pages.techRoleOverviewPage.TechRoleOverviewViewModel
 import dev.mokkery.answering.returns
 import dev.mokkery.everySuspend
 import dev.mokkery.mock

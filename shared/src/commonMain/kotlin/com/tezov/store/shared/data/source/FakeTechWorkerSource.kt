@@ -73,7 +73,11 @@ class FakeTechWorkerDataSource {
     }
 
     fun getAllWorkers(): List<TechWorkerDataModel> = workers.toList()
-    fun findWorkersByRole(role: TechRoleDataModel): List<TechWorkerDataModel> = workers.filter { it.role == role }
+    fun findWorkersByRole(role: TechRoleDataModel): List<TechWorkerDataModel> =
+        workers.filter { it.role == role }
+
     fun getWorkerById(id: String): TechWorkerDataModel? = workers.find { it.id == id }
-    fun releaseWorkers(ids: List<String>) { workers.removeAll { it.id in ids } }
+    fun releaseWorkers(ids: List<String>) {
+        workers.removeAll { it.id in ids }
+    }
 }

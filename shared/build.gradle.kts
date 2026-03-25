@@ -1,5 +1,3 @@
-import kotlin.collections.plus
-
 plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kotlinMultiplatform)
@@ -177,18 +175,19 @@ jacoco {
                 }
             </style>
         """.trimIndent()
-            reportDir.get().asFile.walkTopDown().filter { it.isFile && it.extension == "html" }.forEach { file ->
-                var html = file.readText(Charsets.UTF_8)
-                val bodyTagRegex = Regex("<body.*?>")
-                val bodyTag = bodyTagRegex.find(html)?.value ?: "<body>"
-                val injection = when {
-                    file.name.endsWith(".kt.html") -> "$bodyTag\n$darkCodeCss"
-                    file.name == "index.html" -> "$bodyTag\n$darkThemeCss\n$filterHtml"
-                    else -> "$bodyTag\n$darkThemeCss"
+            reportDir.get().asFile.walkTopDown().filter { it.isFile && it.extension == "html" }
+                .forEach { file ->
+                    var html = file.readText(Charsets.UTF_8)
+                    val bodyTagRegex = Regex("<body.*?>")
+                    val bodyTag = bodyTagRegex.find(html)?.value ?: "<body>"
+                    val injection = when {
+                        file.name.endsWith(".kt.html") -> "$bodyTag\n$darkCodeCss"
+                        file.name == "index.html" -> "$bodyTag\n$darkThemeCss\n$filterHtml"
+                        else -> "$bodyTag\n$darkThemeCss"
+                    }
+                    html = html.replaceFirst(bodyTagRegex, injection)
+                    file.writeText(html, Charsets.UTF_8)
                 }
-                html = html.replaceFirst(bodyTagRegex, injection)
-                file.writeText(html, Charsets.UTF_8)
-            }
         }
     }
     tasks.register("allTestsAndCoverage", JacocoReport::class.java) {

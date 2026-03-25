@@ -27,7 +27,7 @@ class GenerateWorkers {
             count: Int,
             roles: List<TechRoleDomainModel> = TechRoleDomainModel.entries.shuffled().take(count)
         ): List<TechWorkerDomainModel> {
-            if(count == 0) {
+            if (count == 0) {
                 return emptyList()
             }
             require(count >= roles.size) { "count must be greater than roles size" }
@@ -124,5 +124,5 @@ class GenerateWorkers {
             createList(roles.size - 1, roles)
         }
     }
-    
+
 }

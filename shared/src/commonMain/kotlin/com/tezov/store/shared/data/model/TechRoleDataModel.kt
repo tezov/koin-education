@@ -13,7 +13,7 @@ enum class TechRoleDataModel {
     QA_ENGINEER
 }
 
-fun TechRoleDataModel.toTechRoleDomainModel(): TechRoleDomainModel = when(this) {
+fun TechRoleDataModel.toTechRoleDomainModel(): TechRoleDomainModel = when (this) {
     TechRoleDataModel.JUNIOR_DEVELOPER -> TechRoleDomainModel.JUNIOR_DEVELOPER
     TechRoleDataModel.SENIOR_DEVELOPER -> TechRoleDomainModel.SENIOR_DEVELOPER
     TechRoleDataModel.STAFF_ENGINEER -> TechRoleDomainModel.STAFF_ENGINEER
@@ -24,7 +24,7 @@ fun TechRoleDataModel.toTechRoleDomainModel(): TechRoleDomainModel = when(this) 
     TechRoleDataModel.QA_ENGINEER -> TechRoleDomainModel.QA_ENGINEER
 }
 
-fun TechRoleDomainModel.toTechRoleDataModel(): TechRoleDataModel = when(this) {
+fun TechRoleDomainModel.toTechRoleDataModel(): TechRoleDataModel = when (this) {
     TechRoleDomainModel.JUNIOR_DEVELOPER -> TechRoleDataModel.JUNIOR_DEVELOPER
     TechRoleDomainModel.SENIOR_DEVELOPER -> TechRoleDataModel.SENIOR_DEVELOPER
     TechRoleDomainModel.STAFF_ENGINEER -> TechRoleDataModel.STAFF_ENGINEER

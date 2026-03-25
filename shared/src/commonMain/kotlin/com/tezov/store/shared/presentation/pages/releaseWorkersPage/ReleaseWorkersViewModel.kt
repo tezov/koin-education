@@ -3,7 +3,6 @@ package com.tezov.store.shared.presentation.pages.releaseWorkersPage
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tezov.store.shared.domain.models.WorkerIdDomainModel
-import com.tezov.store.shared.domain.protocol.TechIndustryRepositoryProtocol
 import com.tezov.store.shared.domain.usecases.ListWorkersByRoleUseCase
 import com.tezov.store.shared.domain.usecases.ReleaseWorkersUseCase
 import com.tezov.store.shared.presentation.models.WorkerCardUiModel

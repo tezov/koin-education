@@ -6,8 +6,6 @@ import com.tezov.store.shared.domain.models.TechWorkerDomainModel
 import com.tezov.store.shared.domain.usecases.ListWorkersByRoleUseCase
 import com.tezov.store.shared.presentation.models.WorkerDetailUiModel
 import com.tezov.store.shared.presentation.models.toDetailUiModel
-import com.tezov.store.shared.presentation.pages.releaseWorkersPage.ReleaseWorkersViewModel
-import com.tezov.store.shared.presentation.pages.techRoleDetailPage.TechRoleDetailsViewModel
 import dev.mokkery.answering.returns
 import dev.mokkery.everySuspend
 import dev.mokkery.matcher.any
