@@ -44,12 +44,24 @@ import com.tezov.store.shared.presentation.pages.techRoleDetailPage.TechRoleDeta
 import com.tezov.store.shared.presentation.pages.techRoleOverviewPage.TechRoleOverviewPage
 import kotlinx.coroutines.launch
 import org.koin.compose.KoinApplication
+import org.koin.compose.currentKoinScope
 
 @Composable
 fun MainScreen() {
     KoinApplication(
         configuration = koinConfiguration,
-        content = { MainScreenContent() }
+        content = {
+
+            /* to demonstrate cross platform injection */
+            val scope = currentKoinScope()
+            val composable = remember {
+                scope.get<PlatformPresentationProtocol>()
+            }
+            composable.ComposableFromPlatform()
+            /* end demo */
+
+//            MainScreenContent()
+        }
     )
 }
 

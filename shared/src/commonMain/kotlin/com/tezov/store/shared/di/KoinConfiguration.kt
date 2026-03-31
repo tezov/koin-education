@@ -15,7 +15,7 @@ import org.koin.plugin.module.dsl.koinConfiguration
 class SharedModule
 
 @KoinApplication(modules = [SharedModule::class])
-object SharedApplication
+class SharedApplication
 
 val koinConfiguration = koinConfiguration<SharedApplication> {
 
