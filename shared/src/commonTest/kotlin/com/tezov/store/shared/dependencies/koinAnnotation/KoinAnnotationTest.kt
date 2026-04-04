@@ -36,6 +36,7 @@ import kotlin.uuid.Uuid
 object SharedModuleTest
 
 @Module
+@ComponentScan("com.tezov.store.shared.dependencies.koinAnnotation")
 @Configuration("test")
 object SharedModuleTest2 {
     // Module used like Dagger/Hilt that provide stuff
@@ -363,9 +364,6 @@ class KoinAnnotationTest {
     }
 
 //************************************ Late Declaration
-
-    /* Late declaration works only if compile safety is disabled. It should not, for now, I assume that is a bug. */
-
     class LateDeclaration
 
     @Single
@@ -423,9 +421,6 @@ class KoinAnnotationTest {
     }
 
 //************************************ Scope with current scope injection
-
-    /* Late declaration works only if compile safety is disabled. It should not, for now, I assume that is a bug. */
-
     @Scope
     class ScopeC
 
@@ -449,9 +444,6 @@ class KoinAnnotationTest {
     }
 
 //************************************ Scope with late declaration
-
-    /* Late declaration works only if compile safety is disabled. It should not, for now, I assume that is a bug. */
-
     @Scope
     class ScopeB
 
