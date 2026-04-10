@@ -36,4 +36,5 @@ dependencies {
     implementation(libs.compose.activity)
     implementation(libs.compose.foundation.android)
     implementation(libs.compose.ui.android)
+    implementation(libs.koin.compose)
 }

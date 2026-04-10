@@ -11,7 +11,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+            MainScreen(moduleDeclarations = emptyList())
         }
     }
 }

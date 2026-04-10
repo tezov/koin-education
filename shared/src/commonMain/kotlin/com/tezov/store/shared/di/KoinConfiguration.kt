@@ -3,6 +3,8 @@ package com.tezov.store.shared.di
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.KoinApplication
 import org.koin.core.annotation.Module
+import org.koin.dsl.ModuleDeclaration
+import org.koin.dsl.module
 import org.koin.plugin.module.dsl.koinConfiguration
 
 @Module
@@ -17,6 +19,8 @@ class SharedModule
 @KoinApplication(modules = [SharedModule::class])
 class SharedApplication
 
-val koinConfiguration = koinConfiguration<SharedApplication> {
-
+fun koinConfiguration(
+    moduleDeclaration: ModuleDeclaration
+) = koinConfiguration<SharedApplication> {
+    modules(module { moduleDeclaration() })
 }

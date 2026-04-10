@@ -11,10 +11,7 @@ plugins {
 }
 
 koinCompiler {
-//    userLogs = true
-//    debugLogs = true
     compileSafety = false
-//    unsafeDslChecks = false
 }
 
 kotlin {

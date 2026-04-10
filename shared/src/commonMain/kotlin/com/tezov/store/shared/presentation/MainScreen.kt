@@ -36,6 +36,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.tezov.store.shared.di.koinConfiguration
+import com.tezov.store.shared.domain.protocol.FromIosProtocol
 import com.tezov.store.shared.presentation.navigation.AppNavKey
 import com.tezov.store.shared.presentation.navigation.bottomBarNavigationItems
 import com.tezov.store.shared.presentation.navigation.rememberBackStackNavigation
@@ -45,19 +46,21 @@ import com.tezov.store.shared.presentation.pages.techRoleOverviewPage.TechRoleOv
 import kotlinx.coroutines.launch
 import org.koin.compose.KoinApplication
 import org.koin.compose.currentKoinScope
+import org.koin.dsl.ModuleDeclaration
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    moduleDeclaration: ModuleDeclaration
+) {
     KoinApplication(
-        configuration = koinConfiguration,
+        configuration = koinConfiguration(moduleDeclaration),
         content = {
-
-            /* to demonstrate cross platform injection */
+            /* to demonstrate ios injection */
             val scope = currentKoinScope()
-            val composable = remember {
-                scope.get<PlatformPresentationProtocol>()
+            val fromIos = remember {
+                scope.getOrNull<FromIosProtocol>()
             }
-            composable.ComposableFromPlatform()
+            println("fromIos is ${fromIos?.getInt()}")
             /* end demo */
 
 //            MainScreenContent()
